@@ -53,21 +53,25 @@ class LinkedList {
 // -------------------------------------------------------------------
 
 // T: O(N) S: O(1)
+// pro: best respect to time
+// con: doesn't return a new list
 const traditional = list => {
   let next = null;
   let previous = null;
   let node = list.head;
   while(node.next !== null) {
     next = node.next
-    previous = node;
     node.next = previous;
+    previous = node;
     node = next;
   }
   list.head = node;
   return list;
 }
 
-// T: O(?) S: O(1)
+// T: O(N) S: O(N)
+// pro: 
+// con: 
 const recursive = list => {
   let next = null;
   let previous = null; 
@@ -77,15 +81,17 @@ const recursive = list => {
       return undefined;
     }
     next = node.next
-    previous = node;
     node.next = previous;
+    previous = node;
     recurse(next);
   }(node));
   list.head = node;
   return list;
 }
 
-// T: O(N) S: O(N)
+// T: O(N^2) S: O(N)
+// pro: returns a new list
+// con: is an array
 const arrays = list => {
   let array = [];
   let node = list.head;
@@ -100,7 +106,9 @@ const arrays = list => {
   return newList;
 }
 
-// t: O(N) S: O(N)
+// t: O(N^2) S: O(N)
+// pro: returns a new list, is a stack
+// con: N space
 const stacks = list => {
   let stack = new Stack();
   let node = list.head;
