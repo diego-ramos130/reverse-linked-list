@@ -70,8 +70,8 @@ const traditional = list => {
 }
 
 // T: O(N) S: O(N)
-// pro: 
-// con: 
+// pro: uses recursion
+// con: uses recursion
 const recursive = list => {
   let next = null;
   let previous = null; 
